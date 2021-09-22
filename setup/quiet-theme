@@ -11,6 +11,7 @@
 /home/matei/dotfiles/config/discocss -> /home/matei/.config/discocss
 /home/matei/dotfiles/config/dunst -> /home/matei/.config/dunst
 /home/matei/dotfiles/config/kmonad -> /home/matei/.config/kmonad
+/home/matei/dotfiles/config/mbsyncrc -> /home/matei/.mbsyncrc
 /home/matei/dotfiles/config/mopidy -> /home/matei/.config/mopidy
 /home/matei/dotfiles/config/ncmpcpp -> /home/matei/.config/ncmpcpp
 /home/matei/dotfiles/config/neofetch -> /home/matei/.config/neofetch
