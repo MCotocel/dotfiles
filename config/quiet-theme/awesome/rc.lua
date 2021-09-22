@@ -57,10 +57,12 @@ require("config.rules")
 require("config.misc")
 
 -- Widgets
--- require("widgets.cpu-bar")
+require("widgets.brightness")
+require("widgets.volume")
+--require("widgets.pfp")
 
 -- Battery warning
 require("config.battery-warning")
 
--- Layout switched
+-- Layout switcher
 require("config.layout")

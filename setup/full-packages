@@ -135,6 +135,7 @@ xorg-xdpyinfo
 xorg-xev
 xorg-xinit
 xorg-xsetroot
+xorg-server-xephyr
 xss-lock
 xterm
 youtube-dl
@@ -144,3 +145,5 @@ zsh
 
 
 giph
+
+xorg-xfontsel

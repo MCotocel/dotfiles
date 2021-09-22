@@ -3,5 +3,6 @@
 
 # System
 /home/matei/dotfiles/config/system/pacman.conf -> /etc/pacman.conf
+/home/matei/dotfiles/config/system/paru.conf -> /etc/paru.conf
 /home/matei/dotfiles/config/system/makepkg.conf -> /etc/makepkg.conf
 /home/matei/dotfiles/config/system/sudoers -> /etc/sudoers

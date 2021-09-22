@@ -7,6 +7,12 @@ local bling = require("modules.bling")
 local machi = require("modules.layout-machi")
 local revelation = require("modules.awesome-revelation")
 
+-- Mouse Bindings
+awful.mouse.append_global_mousebindings({
+    awful.button({}, 8, awful.tag.viewprev),
+    awful.button({}, 9, awful.tag.viewnext)
+})
+
 awful.keyboard.append_global_keybindings({
 
 --- AwesomeWM ---
@@ -71,13 +77,13 @@ awful.key({modkey}, "Right", awful.tag.viewnext, {
     group = "Tags"
 }),
 
---- Windows ---
+-- View desktop
+awful.key({modkey}, "d", function() awful.tag.viewnone() end, {
+    description = "View desktop",
+    group = "Tags"
+}),
 
--- Switch layout
--- awful.key({modkey, "Shift"}, "space", function() awful.layout.inc(1) end, {
---     description = "Switch layout",
---     group = "Windows"
--- }),
+--- Windows ---
 
 -- Toggle floating mode
 awful.key({modkey, "Control"}, "space", awful.client.floating.toggle, {
@@ -159,6 +165,11 @@ awful.key({modkey, "Control"}, "m", function () local c = awful.client.restore()
      group = "Windows"
 }),
 
+awful.key({modkey}, "c", function(c) awful.client.floating.set(c, true) awful.placement.centered(c) end, {
+     description = "Center window",
+     group = "Windows"
+}),
+
 --- Applications and menus --
 
 -- Open terminal
@@ -213,7 +224,8 @@ awful.key({modkey}, "/", hotkeys_popup.show_help, {
 
 -- Volume up
 awful.key({}, "XF86AudioRaiseVolume", function()
-      awful.spawn.with_shell("~/.bin/volup")
+      awesome.emit_signal("volume_change")
+      awful.spawn.with_shell("pactl set-sink-volume 0 +1%")
       end, {
       description = "Volume up",
       group = "Various functions"
@@ -221,15 +233,17 @@ awful.key({}, "XF86AudioRaiseVolume", function()
 
 -- Volume down
 awful.key({}, "XF86AudioLowerVolume", function()
-      awful.spawn.with_shell("~/.bin/voldown")
-      end, {  
+      awesome.emit_signal("volume_change")
+      awful.spawn.with_shell("pactl set-sink-volume 0 -1%")
+      end, {
       description = "Volume down",
       group = "Various functions"
 }),
 
 -- Toggle mute
 awful.key({}, "XF86AudioMute", function()
-      awful.spawn.with_shell("~/.bin/voltoggle")
+      awesome.emit_signal("volume_change")
+      awful.spawn.with_shell("pactl set-sink-mute 0 toggle")
       end, {
       description = "Toggle mute",
       group = "Various functions"
@@ -246,7 +260,7 @@ awful.key({modkey}, "XF86AudioRaiseVolume", function()
 -- Previous song
 awful.key({modkey}, "XF86AudioLowerVolume", function()
       awful.spawn.with_shell("playerctl previous")
-      end, {  
+      end, {
       description = "Previous song",
       group = "Various functions"
 }),
@@ -261,16 +275,18 @@ awful.key({modkey}, "XF86AudioMute", function()
 
 -- Brightness up
 awful.key({}, "XF86MonBrightnessUp", function()
-      awful.spawn.with_shell("~/.bin/brightup")
-      end, {  
+      awesome.emit_signal("backlight_change")
+      awful.spawn.with_shell("brightnessctl s +1%")
+      end, {
       description = "Brightness up",
       group = "Various functions"
 }),
 
 -- Brightness down
 awful.key({}, "XF86MonBrightnessDown", function()
-      awful.spawn.with_shell("~/.bin/brightdown")
-      end, {  
+      awesome.emit_signal("backlight_change")
+      awful.spawn.with_shell("brightnessctl s 1%-")
+      end, {
       description = "Brightness down",
       group = "Various functions"
 })})
@@ -288,6 +304,7 @@ client.connect_signal("request::default_mousebindings", function()
         end),
     })
 end)
+
 awful.keyboard.append_global_keybindings({
     awful.key {
         modifiers = { modkey },

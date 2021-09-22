@@ -3,7 +3,6 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -53,7 +52,7 @@ awful.screen.connect_for_each_screen(function(s)
     awful.tag({"1", "2", "3", "4", "5", "6", "7", "8", "9"}, s, awful.layout.suit.fair)
 
     -- Show currently used layout
-    layoutbox = awful.widget.layoutbox(s)
+    local layoutbox = awful.widget.layoutbox(s)
 
     layoutbox:buttons(gears.table.join(
         awful.button({}, 1, function() awful.layout.inc(1) end),

@@ -13,6 +13,7 @@
 /home/matei/dotfiles/config/kmonad -> /home/matei/.config/kmonad
 /home/matei/dotfiles/config/mopidy -> /home/matei/.config/mopidy
 /home/matei/dotfiles/config/ncmpcpp -> /home/matei/.config/ncmpcpp
+/home/matei/dotfiles/config/neofetch -> /home/matei/.config/neofetch
 /home/matei/dotfiles/config/nvim -> /home/matei/.config/nvim
 /home/matei/dotfiles/config/quiet-theme/picom -> /home/matei/.config/picom
 /home/matei/dotfiles/config/plank -> /home/matei/.config/plank

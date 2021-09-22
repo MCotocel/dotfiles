@@ -329,6 +329,7 @@ This adds a leader key to Emacs, which is /incredibly/ useful.
       "oep" 'org-latex-export-to-pdf
       "oeh" 'org-html-export-to-html
       "oem" 'org-man-export-to-man
+      "oeu" 'org-publish-project
       ; Roam
       "orf" 'org-roam-node-find
       "ori" 'org-roam-node-insert
@@ -466,7 +467,7 @@ Vertico helps with better completion and to replace the default M-x. Consult add
 
 ** Dashboard
 
-The default startup screen is bland, let's replace it with a simplistic dashboard, made by me.
+The default startup screen is bland, let's replace it with a simplistic dashboard, configured by me.
 
 #+BEGIN_SRC emacs-lisp
   (use-package dashboard)
@@ -481,7 +482,7 @@ The default startup screen is bland, let's replace it with a simplistic dashboar
     dashboard-set-navigator t)
   (setq dashboard-items 'nil)
   (setq dashboard-init-info "Welcome to the (lisp) machine")
-  (setq dashboard-footer 'nil)
+  (setq dashboard-footer-messages 'nil)
 
   (defun dashboard-insert-info (list-size)
     (insert "Find file             SPC f f\nFind bookmarks        SPC f b\nFind recent files     SPC f r"))
@@ -693,18 +694,24 @@ I read RSS feeds, so we're going to configure a reader.
 #+BEGIN_SRC emacs-lisp
   (use-package elfeed)
   (setq elfeed-feeds
-         '(("https://nixers.net/syndication.php?fid=12,15&limit=25" tech)
-           ("https://christine.website/blog.rss" tech)
-           ("https://ag91.github.io/rss.xml" tech)
-           ("https://protesilaos.com/codeblog.xml" tech)
-           ("https://sachachua.com/blog/category/emacs/feed" tech)
-           ("https://lepisma.xyz/atom.xml" tech)
-           ("https://pragmaticemacs.con/feed" tech)
-           ("https://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml" tech)
+         '(("http://nixers.net/syndication.php?fid=12,15&limit=25" tech)
+           ("http://christine.website/blog.rss" tech)
+           ("http://ag91.github.io/rss.xml" tech)
+           ("http://protesilaos.com/codeblog.xml" tech)
+           ("http://sachachua.com/blog/category/emacs/feed" tech)
+           ("http://lepisma.xyz/atom.xml" tech)
+           ("http://vermaden.wordpress.com/feed/" tech)
+           ("http://pragmaticemacs.con/feed" tech)
+           ("http://bitcannon.net/index.xml" tech)
+           ("http://writepermission.com/rss.xml" tech)
+           ("http://unixsheikh.com/feed.rss" tech)
+           ("http://karl-voit.at/feeds/lazyblorg-all.atom_1.0.links-only.xml" tech)
            ("http://www.reddit.com/r/terminal_porn.rss" tech)))
-  (add-to-list 'evil-emacs-state-modes 'elfeed-search-mode)
-  (add-to-list 'evil-emacs-state-modes 'elfeed-show-mode)
+  (evil-define-key 'normal elfeed-search-mode-map (kbd "r") 'elfeed-search-untag-all-unread)
+  (evil-define-key 'normal elfeed-search-mode-map (kbd "u") 'elfeed-update)
 #+END_SRC
+
+#+RESULTS:
 
 ** EMMS
 
@@ -819,6 +826,14 @@ Here, we install and configure projectile, which is a project interaction librar
 
 * Org mode
 
+** Org-contrib
+
+Org-contrib has some neat stuff.
+
+#+begin_src emacs-lisp
+  (use-package org-contrib)
+#+end_src
+
 ** Files locations
   
 We want to save everything in /one/ location.
@@ -834,11 +849,27 @@ We want to save everything in /one/ location.
 Let's set the export backends to things I commonly use, along with some extra settings for html exports.
 
 #+BEGIN_SRC emacs-lisp
-  (setq org-export-backends '(latex md html))
+  (setq org-export-backends '(latex md html man))
 
   (require 'org)
   (require 'ox-latex)
   (require 'ox-man)
+  (require 'ox-publish)
+  (require 'ox-rss)
+
+  (setq org-publish-project-alist
+        '(
+          ("Blog"
+           :base-directory "~/Blog/"
+           :base-extension "org"
+           :publishing-directory "~/Blog/"
+           :recursive t
+           :publishing-function org-html-publish-to-html
+           :headline-levels 4
+           :auto-preamble t
+           )
+        ))
+
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-listings 'minted) 
 
