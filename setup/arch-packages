@@ -1,0 +1,18 @@
+# Command to use for installing
+COMMAND_INSTALL='paru -S --needed'
+
+# Packages
+awesome-git
+bashdb
+discocss-git
+discord
+emacs-git
+minecraft-launcher
+nm-connection-editor
+picom-jonaburg-git
+quiet-gtk-git
+river-git
+spotify
+steam
+wezterm-git
+xorg

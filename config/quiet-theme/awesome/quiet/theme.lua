@@ -93,7 +93,7 @@ theme.titlebar_maximized_button_focus_active  = gfs.get_configuration_dir() .. "
 -- Edge snap
 
 theme.snap_bg = "#0b1116"
-theme.snap_border_width = dpi(2)
+theme.snap_border_width = dpi(10)
 
 -- Icon theme
 
