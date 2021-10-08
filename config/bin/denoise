@@ -1,6 +1,0 @@
-convert "$1" -endian LSB "$1"-temp-denoise.pfm
-oidnDenoise -ldr "$1"-temp-denoise.pfm -srgb -o "$1"-temp-denoise-output.pfm
-convert "$1"-temp-denoise-output.pfm "$1"-denoised.png
-notify-send "Open Image Denoiser" "Finished denoising" -i ./"$1"-denoised.png
-rm -rf "$1"-temp-denoise.pfm "$1"-temp-denoise-output.pfm
-notify-send "Denoiser" "Denoising completed!"

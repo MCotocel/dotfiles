@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Exec=env HOME=/home/matei/Multimacs/Space /usr/bin/emacs
-Name=Spacemacs

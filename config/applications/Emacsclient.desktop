@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Exec=/usr/bin/emacsclient -c
-Name=Emacsclient
-Icon=/usr/share/icons/Papirus/16x16/apps/emacs.svg

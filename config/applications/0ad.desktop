@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Exec=env DRI_PRIME=1 /usr/bin/0ad
-Name=0 A.D

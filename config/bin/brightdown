@@ -1,3 +1,0 @@
-brightnessctl s 10%-
-
-~/.bin/sys-notify "Brightness is now at `brightnessctl | grep -o '...%' | sed 's/(//g'`" low 

@@ -1,8 +1,0 @@
-sleep 0.2
-
-url=$(rofi -dmenu -i -p 'Shorten URL' -theme-str 'entry { placeholder: "example.com"; placeholder-color: grey;} window { height: 12%; width: 25%;}')
- 
-url="https://"$url
-short=$(curl -s -F"shorten=$url" https://0x0.st)
-echo $short | xclip -sel clip
-notify-send "URL copied to clipboard" "$short"

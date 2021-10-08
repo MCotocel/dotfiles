@@ -1,8 +1,0 @@
-super + {h,j,k,l}
-	bspc node -f {west,south,north,east}
-
-super + Return
-    alacritty
-
-super + shift + q
-    bspc node -c

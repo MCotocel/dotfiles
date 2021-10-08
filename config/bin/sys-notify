@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-function main() {
-  echo 'local naughty = require("naughty") naughty.destroy_all_notifications()' | awesome-client
-  notify-send 'System Notification' "${1}" -u "${2}" -i /usr/share/icons/ePapirus-Dark/128x128/apps/gnome-settings.svg
-}
-
-main "${@}"

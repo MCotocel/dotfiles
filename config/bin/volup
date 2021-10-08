@@ -1,3 +1,0 @@
-pactl set-sink-volume 0 +5%
-
-~/.bin/sys-notify "Volume is now at `pamixer --get-volume`%" low

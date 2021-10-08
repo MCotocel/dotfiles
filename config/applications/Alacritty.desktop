@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Exec=/usr/bin/alacritty
-Name=Alacritty
-Icon=/usr/share/icons/Papirus/16x16/apps/terminal.svg
